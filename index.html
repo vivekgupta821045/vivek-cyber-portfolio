@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIVEK GUPTA :: SECURITY OPERATIONS &amp; CYBER LAB</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Orbitron:wght@600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- HACKER BOOT SCREEN -->
+    <div id="boot">
+        <div class="boot-container">
+
+            <div class="boot-header">
+                <span class="boot-dot"></span>
+                VIVEK.SEC // SYSTEM INITIALIZATION
+            </div>
+
+            <div class="boot-logo">
+               [ ACCESS GRANTED ] <span>WELCOME TO VIVEK'S CYBERVERSE </span>
+            </div>
+
+            <div class="boot-subtitle">
+                CYBERSECURITY OPERATIONS TERMINAL
+            </div>
+
+            <div class="boot-terminal">
+                <div class="boot-terminal-header">
+                    <span>root@kali:~</span>
+                    <span>SECURE CONNECTION</span>
+                </div>
+
+                <pre id="bootText"></pre>
+
+                <div class="boot-cursor"></div>
+            </div>
+
+            <div class="boot-progress">
+                <div class="boot-progress-fill"></div>
+            </div>
+
+            <div class="boot-footer">
+                <span>ENCRYPTION: AES-256</span>
+                <span>STATUS: INITIALIZING</span>
+            </div>
+
+        </div>
+    </div>
+    <!-- FIXED 3D WEBGL CYBER GLOBE CANVAS -->
+    <div id="globe-canvas-wrap"></div>
+
+    <!-- BACKGROUND VISUAL MATRIX OVERLAYS -->
+    <canvas id="matrix"></canvas>
+    <div class="grid-overlay"></div>
+    <div class="scanlines"></div>
+    <div class="vignette"></div>
+
+    <!-- TOP KALI / MR. ROBOT OS TASKBAR -->
+    <header class="os-taskbar">
+        <div class="os-left">
+            <a href="#hero" class="os-logo">
+                <span class="os-dot"></span>
+                <span>VIVEK.SEC</span>
+            </a>
+            <span class="os-badge">SYS: ARMED</span>
+            <div class="threat-count-pill">
+                <span class="pulse-red"></span>
+                <span id="taskbarThreatCount">3,137 THREATS</span>
+            </div>
+        </div>
+
+
+
+        <div class="os-right">
+            <button class="os-action-btn" id="themeToggleBtn" title="Toggle DEFCON 1 Red / Cyber Teal">
+                🌐 TEAL CYBER
+            </button>
+            <button class="os-action-btn" id="shieldToggleBtn" title="Toggle 3D Holographic Cyber Shield">
+                🛡️ DEPLOY SHIELD
+            </button>
+            <button class="os-action-btn active" id="openTerminalBtn" title="Toggle Hacker CLI Terminal">
+                ⌨️ TERMINAL
+            </button>
+            <button class="os-action-btn" id="audioToggleBtn" title="Toggle Synthesized Cyber Sounds">
+                🔊 AUDIO
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- ==================================================================
+             HERO SECTION: 3D CYBER BADGE + TERMINAL DOSSIER
+             ================================================================== -->
+        <section id="hero">
+            <div class="hero-left">
+                <div class="eyebrow">DEFCON 5 // SEC-OPS CLEARANCE L4</div>
+                <div class="hero-terminal-card">
+                    <div class="term-header">
+                        <div class="term-controls">
+                            <span class="term-dot red"></span>
+                            <span class="term-dot yellow"></span>
+                            <span class="term-dot green"></span>
+                        </div>
+                        <span class="term-title">operator@kali-box: ~/credentials.sh</span>
+                        <span style="font-size:10px;color:var(--accent);">TLS 1.3 SECURE</span>
+                    </div>
+                    <div class="term-body-content">
+                        <div class="hero-prompt-row">
+                            <span class="prompt-user">vivek@sec-node:~$</span>
+                            <span class="prompt-cmd">./verify_operator.sh --verbose</span>
+                        </div>
+                        <div style="font-size:11px;color:var(--text-muted);margin-bottom:8px;">
+                            [+] Initializing biometric verification sequence... SHA-256 integrity OK ✔
+                        </div>
+                        <h1 class="hero-name">VIVEK <span>GUPTA</span></h1>
+                        <div class="role-typing-box">
+                            <span id="heroTypedRole"></span>
+                            <span class="typed-cursor"></span>
+                        </div>
+                        <p class="hero-bio">
+                            <b>B.Tech Computer Science Engineering</b> student at Arka Jain University specializing in
+                            <b>Cybersecurity, Ethical Hacking, Full-Stack Architecture</b>, and real-time backend
+                            systems.
+                            I design resilient infrastructure that neutralizes modern attack vectors while delivering
+                            ultra-slick user experiences.
+                        </p>
+                        <div class="hero-tags">
+                            <span class="hero-tag">🛡️ Offensive &amp; Defensive Web Sec</span>
+                            <span class="hero-tag">⚡ Node.js / Express</span>
+                            <span class="hero-tag">☕ Advanced Java</span>
+                            <span class="hero-tag">🔄 Socket.IO Real-Time</span>
+                            <span class="hero-tag">🍃 MongoDB &amp; MySQL</span>
+                        </div>
+                        <div class="hero-actions">
+                            <a href="#projects" class="btn btn-primary">▸ View Deployed Projects</a>
+                            <a href="#cyber-command" class="btn btn-secondary">🌐 3D Cyber Radar</a>
+                            <button class="btn btn-ghost" onclick="window.flipVipBadge()">🔄 Inspect 3D VIP
+                                Badge</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PILLAR 4: 3D HOLOGRAPHIC VIP CYBER BADGE -->
+            <div class="badge-stage-wrap" id="badgeStageWrap">
+                <div class="badge-card-container" id="vipBadgeContainer">
+                    <!-- FRONT FACE -->
+                    <div class="badge-card-face front">
+                        <div class="holographic-sheen"></div>
+                        <div class="specular-glare"></div>
+                        <div class="badge-lanyard-slot"></div>
+                        <div class="badge-top-row">
+                            <span>OPERATOR PASS // VK-0417</span>
+                            <span class="badge-vip-pill">VIP LEVEL 4</span>
+                        </div>
+                        <div class="badge-chip-wrap">
+                            <div class="smart-chip-gold">
+                                <span class="chip-line-h"></span>
+                                <span class="chip-line-v1"></span>
+                                <span class="chip-line-v2"></span>
+                            </div>
+                            <div class="badge-nfc-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 18H4V4h16v16zM6 10h2v4H6zm4-3h2v10h-2zm4 6h2v4h-2zm4-9h2v16h-2z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="badge-avatar-wrap">
+                            <img src="vivekk.png" alt="Vivek Gupta Cyber Operator">
+                            <div class="badge-scan-beam"></div>
+                            <span class="badge-corner-tl"></span>
+                            <span class="badge-corner-tr"></span>
+                            <span class="badge-corner-bl"></span>
+                            <span class="badge-corner-br"></span>
+                        </div>
+                        <div class="badge-details-box">
+                            <div class="badge-op-name">
+                                <span>VIVEK GUPTA</span>
+                                <span class="online-dot" title="Active Security Node"></span>
+                            </div>
+                            <div class="badge-op-role">// CYBERSECURITY &amp; FULL-STACK</div>
+                            <div class="badge-meta-row">
+                                <span>AFFIL: <b>ARKA JAIN UNIV</b></span>
+                                <span>STATUS: <b>VERIFIED</b></span>
+                            </div>
+                            <div class="badge-meta-row">
+                                <span>HASH: <b>0x7F9A...4B21</b></span>
+                                <span>DEFENSE: <b>ARMED</b></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BACK FACE (FLIP TO REVEAL) -->
+                    <div class="badge-card-face back">
+                        <div class="magnetic-strip"></div>
+                        <div class="security-seal-strip">
+                            <span>ENCRYPTED SEC-STRIP</span>
+                            <span style="color:var(--accent);">AUTH: AES-256</span>
+                        </div>
+                        <div class="fingerprint-scanner-box" id="fpScanner">
+                            <div class="fp-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M17.81 4.47c-.08 0-.16-.02-.23-.06C15.66 3.42 14 3 12.01 3c-1.98 0-3.86.47-5.57 1.41-.24.13-.54.04-.68-.2-.13-.24-.04-.55.2-.68C7.82 2.52 9.86 2 12.01 2c2.13 0 3.99.47 5.92 1.5.24.13.33.43.21.67-.09.19-.21.3-.33.3zm2.56 3.52c-.17 0-.33-.08-.43-.22-1.32-1.85-3.13-2.9-5.38-3.12-.27-.03-.47-.27-.44-.54.03-.27.27-.47.54-.44 2.51.24 4.52 1.41 5.99 3.47.16.22.11.53-.11.69-.05.11-.11.16-.17.16zm-15.5 1.72c-.12 0-.24-.05-.33-.14-.2-.19-.2-.51-.01-.71 1.77-1.8 3.98-2.82 6.42-2.95.28-.02.51.2.52.48.02.28-.2.51-.48.52-2.18.12-4.16 1.03-5.74 2.64-.1.11-.24.16-.38.16zm11.75 6.64c-.21 0-.4-.13-.47-.33-.5-1.47-.69-2.22-1.28-3.04-1.22-1.7-3.08-2.6-5.26-2.54-2.14.06-4.08 1.07-5.18 2.7-1.03 1.54-1.35 3.53-.88 5.45.07.27-.1.54-.37.6-.27.07-.54-.1-.6-.37-.53-2.19-.17-4.47 1-6.22 1.3-1.92 3.58-3.1 6.1-3.17 2.54-.08 4.72.97 6.16 2.97.69.96.91 1.83 1.46 3.46.09.26-.06.54-.32.63-.03-.01-.06-.01-.09-.01zM12 22c-3.17 0-5.92-1.92-7-4.88-.09-.26.04-.54.3-.64.26-.09.54.04.64.3 1.25 3.39 5.09 5.22 8.57 4.09 3.01-.98 5.06-3.83 4.98-6.99-.01-.28.21-.5.49-.51.28-.01.5.21.51.49.09 3.65-2.26 6.94-5.74 8.08-.57.18-1.16.27-1.75.27zm3.11-4.75c-.24 0-.46-.17-.49-.42-.03-.28.16-.52.44-.56 2.05-.28 3.56-1.87 3.65-3.84.01-.28.24-.49.52-.48.28.01.49.24.48.52-.11 2.45-1.98 4.43-4.52 4.78h-.08z" />
+                                </svg>
+                            </div>
+                            <span class="fp-status" id="fpStatus">HOLD TO AUTHENTICATE</span>
+                        </div>
+                        <div class="badge-footer-keys">
+                            <div>PUBKEY: ED25519-SHA512-VKG-9941</div>
+                            <div>SIGNATURE: d41d8cd98f00b204e9800998ecf8427e</div>
+                            <div style="color:var(--accent);margin-top:4px;">STATUS: HIGH COMMAND GRANTED</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="badge-control-bar">
+                    <button class="badge-control-btn" id="badgeFlipBtn">🔄 Flip 3D Badge</button>
+                    <button class="badge-control-btn" onclick="window.askAiCompanion('shield')">🛡️ Activate
+                        Shield</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================================================================
+             STATISTICS COUNTERS
+             ================================================================== -->
+        <section style="padding-top:0;padding-bottom:20px;">
+            <div class="stats-strip">
+                <div class="stat-card">
+                    <div class="stat-number">4<span>+</span></div>
+                    <div class="stat-label">Projects Shipped</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">5<span>+</span></div>
+                    <div class="stat-label">Core Tech Stacks</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">99.9<span>%</span></div>
+                    <div class="stat-label">Security Uptime</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">24<span>/7</span></div>
+                    <div class="stat-label">Threat Telemetry</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================================================================
+             PILLAR 1: 3D CYBER DEFENSE COMMAND CENTER / ATTACK MAP
+             Exact recreation of user images 1 & 2 with interactive telemetry
+             ================================================================== -->
+        <section id="cyber-command">
+            <div class="eyebrow">01 // DEFENSE MATRIX</div>
+            <h2 class="title">Global Cyber Threat Radar</h2>
+            <p class="sub">
+                Live Three.js 3D earth mapping cross-border cyber telemetry, DDoS mitigation vectors, and real-time
+                packet anomalies across global transit backbones.
+            </p>
+
+            <div class="cyber-hud-grid">
+                <!-- LEFT HUD: DEFCON STATUS & INCOMING ATTACKS -->
+                <div class="hud-panel">
+                    <div class="hud-panel-title">
+                        <span>DEFCON READINESS</span>
+                        <span style="color:var(--accent);">ACTIVE</span>
+                    </div>
+                    <div class="defcon-status-badge">
+                        <span class="pulse-red"></span>
+                        <span id="hudDefconLabel">DEFCON 1 : CRITICAL</span>
+                    </div>
+                    <div style="font-size:11px;color:var(--text-muted);line-height:1.6;">
+                        Simulated packet telemetry across 13 international server clusters. WAF rules and honey-token
+                        perimeters are enforcing automatic mitigation.
+                    </div>
+                    <div class="hud-panel-title" style="margin-top:10px;">
+                        <span>THREAT TRAJECTORIES</span>
+                        <span>LIVE</span>
+                    </div>
+                    <div class="hud-telemetry-feed" id="hudThreatFeed">
+                        <div class="hud-feed-row blocked"><span>[14:22:01] SYN FLOOD (443)</span><b>BLOCKED</b></div>
+                        <div class="hud-feed-row blocked"><span>[14:22:05] SSH BRUTE FORCE</span><b>DROPPED</b></div>
+                        <div class="hud-feed-row blocked"><span>[14:22:09] SQL INJECTION</span><b>FILTERED</b></div>
+                        <div class="hud-feed-row blocked"><span>[14:22:12] JWT TAMPERING</span><b>REVOKED</b></div>
+                    </div>
+                </div>
+
+                <!-- CENTER HUD: 3D GLOBE CONTROLS OVERLAY -->
+                <div class="cyber-center-view">
+                    <div class="globe-hud-overlay-top">
+                        <span>LAT/LON TELEMETRY: 28.6139° N, 77.2090° E [INDIA]</span>
+                        <span style="color:var(--accent);">ORBIT DYNAMICS: ACTIVE</span>
+                    </div>
+                    <div class="globe-hud-overlay-bottom">
+                        <button class="os-action-btn" onclick="window.setCyberTheme('teal')">🌐 Cyber Teal</button>
+                        <button class="os-action-btn" onclick="window.setCyberTheme('red')">🚨 DEFCON 1 Red</button>
+                        <button class="os-action-btn" onclick="window.toggleCyberShield()">🛡️ Toggle 3D Shield</button>
+                    </div>
+                </div>
+
+                <!-- RIGHT HUD: LIVE INTRUSIONS & PACKET HISTOGRAM -->
+                <div class="hud-panel">
+                    <div class="hud-panel-title">
+                        <span>INTRUSIONS NEUTRALIZED</span>
+                        <span style="color:var(--danger);">24H TOTAL</span>
+                    </div>
+                    <div class="hud-stat-big" id="threatCounterVal">3,137</div>
+                    <div class="hud-panel-title">
+                        <span>PACKET FREQUENCY (PPS)</span>
+                        <span>842.6 k/s</span>
+                    </div>
+                    <div class="hud-bar-chart">
+                        <div class="hud-bar" style="height:60%;"></div>
+                        <div class="hud-bar" style="height:85%;"></div>
+                        <div class="hud-bar" style="height:45%;"></div>
+                        <div class="hud-bar" style="height:100%;"></div>
+                        <div class="hud-bar" style="height:70%;"></div>
+                        <div class="hud-bar" style="height:55%;"></div>
+                        <div class="hud-bar" style="height:90%;"></div>
+                        <div class="hud-bar" style="height:65%;"></div>
+                    </div>
+                    <div
+                        style="font-size:10px;color:var(--text-muted);display:flex;justify-content:space-between;border-top:1px solid rgba(255,255,255,0.05);padding-top:8px;">
+                        <span>EDGE NODES: 13 CLUSTERS</span>
+                        <span style="color:var(--accent);">PERIMETER: HARDENED</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================================================================
+             ABOUT SECTION: OPERATOR PROFILE & TIMELINE
+             ================================================================== -->
+        <section id="about">
+            <div class="eyebrow">02 // PROFILE</div>
+            <h2 class="title">About the Operator</h2>
+            <p class="sub">Bridging the gap between robust software engineering and proactive cyber defense.</p>
+
+            <div class="about-grid">
+                <div class="about-bio-card">
+                    <p>
+                        I'm <b>Vivek Gupta</b>, an engineer pursuing B.Tech in Computer Science and Engineering at
+                        <b>Arka Jain University</b>. My passion lies at the intersection of offensive security, backend
+                        scalability, and defensive systems design.
+                    </p>
+                    <p>
+                        My core production stack revolves around <b>Java, Node.js, Express.js, MongoDB</b>, and
+                        <b>MySQL</b>,
+                        with high-throughput real-time systems powered by <b>Socket.IO</b>. I build architectures that
+                        are lightning fast, responsive, and resilient against intrusion.
+                    </p>
+                    <p>
+                        When I'm not writing server logic, I immerse myself in CTF challenges, reverse-engineer web
+                        application attack surfaces, study OWASP Top 10 vulnerabilities, and craft interfaces as sharp
+                        as terminal code.
+                    </p>
+                </div>
+
+                <div class="timeline-card">
+                    <div class="tl-node">
+                        <div class="tl-year">2026 — PRESENT</div>
+                        <div class="tl-heading">B.Tech, Computer Science Engineering</div>
+                        <div class="tl-desc">Arka Jain University — Deep coursework in computer networks, relational
+                            database security, operating systems, and cryptography.</div>
+                    </div>
+                    <div class="tl-node">
+                        <div class="tl-year">ACTIVE ARSENAL</div>
+                        <div class="tl-heading">Full-Stack &amp; Real-Time Systems</div>
+                        <div class="tl-desc">Architecting distributed Node.js backends, MongoDB data stores, and
+                            real-time event streaming systems with Socket.IO.</div>
+                    </div>
+                    <div class="tl-node">
+                        <div class="tl-year">MISSION FOCUS</div>
+                        <div class="tl-heading">Offensive Security &amp; Penetration Testing</div>
+                        <div class="tl-desc">Analyzing network traffic via Cisco Packet Tracer and Wireshark, hardening
+                            endpoints against injection, XSS, and broken auth.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================================================================
+             SKILLS SECTION: BENTO CAPABILITIES MATRIX
+             ================================================================== -->
+        <section id="skills">
+            <div class="eyebrow">03 // CAPABILITIES</div>
+            <h2 class="title">Capabilities Matrix</h2>
+            <p class="sub">Core proficiency across application development, cybersecurity, and data architecture.</p>
+
+            <div class="skills-bento">
+                <div class="skill-bento-card">
+                    <div class="sk-card-top">
+                        <h4>Web Application &amp; Security</h4>
+                        <div class="sk-icon-wrap">🛡️</div>
+                    </div>
+                    <div class="sk-item-list">
+                        <div class="sk-item">
+                            <div class="sk-meta"><span>Frontend HTML5 / CSS3</span><span>85%</span></div>
+                            <div class="sk-bar-bg">
+                                <div class="sk-bar-fill" style="width:85%;"></div>
+                            </div>
+                        </div>
+                        <div class="sk-item">
+                            <div class="sk-meta"><span>Backend Development</span><span>50%</span></div>
+                            <div class="sk-bar-bg">
+                                <div class="sk-bar-fill" style="width:50%;"></div>
+                            </div>
+                        </div>
+                        <div class="sk-item">
+                            <div class="sk-meta"><span>MongoDB &amp; MySQL</span><span>80%</span></div>
+                            <div class="sk-bar-bg">
+                                <div class="sk-bar-fill" style="width:80%;"></div>
+                            </div>
+                        </div>
+                        <div class="sk-item">
+                            <div class="sk-meta"><span>Authentication (JWT / Sessions)</span><span>82%</span></div>
+                            <div class="sk-bar-bg">
+                                <div class="sk-bar-fill" style="width:82%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-bento-card">
+                    <div class="sk-card-top">
+                        <h4>Cybersecurity Skills</h4>
+                        <div class="sk-icon-wrap">💻</div>
+                    </div>
+                    <div class="sk-item-list">
+                        <div class="sk-item">
+                            <div class="sk-meta"><span>Networking Fundamentals</span><span>90%</span></div>
+                            <div class="sk-bar-bg">
+                                <div class="sk-bar-fill" style="width:90%;"></div>
+                            </div>
+                        </div>
+                        <div class="sk-item">
+                            <div class="sk-meta"><span>Bash Commands &amp; OOP</span><span>50%</span></div>
+                            <div class="sk-bar-bg">
+                                <div class="sk-bar-fill" style="width:50%;"></div>
+                            </div>
+                        </div>
+                        <div class="sk-item">
+                            <div class="sk-meta"><span>kali Linux</span><span>80%</span></div>
+                            <div class="sk-bar-bg">
+                                <div class="sk-bar-fill" style="width:80%;"></div>
+                            </div>
+                        </div>
+                        <div class="sk-item">
+                            <div class="sk-meta"><span>Python</span><span>70%</span></div>
+                            <div class="sk-bar-bg">
+                                <div class="sk-bar-fill" style="width:70%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-bento-card">
+                    <div class="sk-card-top">
+                        <h4>Tools &amp; Protocols</h4>
+                        <div class="sk-icon-wrap">🗄️</div>
+                    </div>
+                    <div class="sk-item-list">
+                        <div class="sk-item">
+                            <div class="sk-meta"><span>Linux &amp; Kali Toolchains</span><span>88%</span></div>
+                            <div class="sk-bar-bg">
+                                <div class="sk-bar-fill" style="width:88%;"></div>
+                            </div>
+                        </div>
+                        <div class="sk-item">
+                            <div class="sk-meta"><span>Cisco Packet Tracer / Net</span><span>82%</span></div>
+                            <div class="sk-bar-bg">
+                                <div class="sk-bar-fill" style="width:82%;"></div>
+                            </div>
+                        </div>
+                        <div class="sk-item">
+                            <div class="sk-meta"><span>Git &amp; GitHub Versioning</span><span>95%</span></div>
+                            <div class="sk-bar-bg">
+                                <div class="sk-bar-fill" style="width:95%;"></div>
+                            </div>
+                        </div>
+                        <div class="sk-item">
+                            <div class="sk-meta"><span>VS Code &amp; Apache NetBeans</span><span>85%</span></div>
+                            <div class="sk-bar-bg">
+                                <div class="sk-bar-fill" style="width:85%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Soft Skills -->
+                <div class="skill-bento-card">
+                    <div class="sk-card-top">
+                        <h4>Soft Skills</h4>
+                        <div class="sk-icon-wrap">🧠</div>
+                    </div>
+
+                    <div class="sk-item-list">
+
+                        <div class="sk-item">
+                            <div class="sk-meta">
+                                <span>Problem Solving</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="sk-bar-bg">
+                                <div class="sk-bar-fill" style="width:85%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="sk-item">
+                            <div class="sk-meta">
+                                <span>Teamwork & Collaboration</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="sk-bar-bg">
+                                <div class="sk-bar-fill" style="width:90%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="sk-item">
+                            <div class="sk-meta">
+                                <span>Communication</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="sk-bar-bg">
+                                <div class="sk-bar-fill" style="width:75%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="sk-item">
+                            <div class="sk-meta">
+                                <span>Leadership</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="sk-bar-bg">
+                                <div class="sk-bar-fill" style="width:80%;"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================================================================
+             PROJECTS SECTION: DEPLOYED CODE
+             ================================================================== -->
+        <section id="projects">
+            <div class="eyebrow">04 // DEPLOYED SYSTEMS</div>
+            <h2 class="title">Featured Builds &amp; Repositories</h2>
+            <p class="sub">Production-tested web platforms, real-time engines, and desktop systems.</p>
+
+            <div class="projects-grid">
+                <!-- PROJECT 1 -->
+                <div class="proj-bento-card">
+                    <div>
+                        <div class="proj-top-tag">
+                            <span>SYSTEM_01.EXE</span>
+                            <span style="color:var(--accent);">● LIVE</span>
+                        </div>
+                        <h3 class="proj-title">Real-Time Chat &amp; User Tracking System</h3>
+                        <p class="proj-desc">
+                            Enterprise-grade real-time messaging architecture utilizing Socket.IO for duplex
+                            communication, dynamic user presence monitoring, and MongoDB persistent storage with
+                            encrypted channels.
+                        </p>
+                        <div class="proj-tech-stack">
+                            <span class="tech-pill">Node.js</span>
+                            <span class="tech-pill">Socket.IO</span>
+                            <span class="tech-pill">MongoDB</span>
+                            <span class="tech-pill">HTML5/CSS3</span>
+                        </div>
+                    </div>
+                    <div class="proj-footer-links">
+                        <a href="https://vivekgupta821045.github.io/Real-Time-Chat-and-User-Tracking-System/"
+                            target="_blank" rel="noopener" class="proj-link">↗ Live Demo</a>
+                        <a href="https://github.com/vivekgupta821045" target="_blank" rel="noopener" class="proj-link">⌥
+                            GitHub Repo</a>
+                    </div>
+                </div>
+
+                <!-- PROJECT 2 -->
+                <div class="proj-bento-card">
+                    <div>
+                        <div class="proj-top-tag">
+                            <span>SYSTEM_02.EXE</span>
+                            <span style="color:var(--cyan);">● SECURE</span>
+                        </div>
+                        <h3 class="proj-title">Medislot Healthcare System</h3>
+                        <p class="proj-desc">
+                            A secure medical appointment booking engine and electronic patient record database designed
+                            with Express.js REST APIs and MySQL relational models to streamline clinic scheduling
+                            workflows.
+                        </p>
+                        <div class="proj-tech-stack">
+                            <span class="tech-pill">Node.js</span>
+                            <span class="tech-pill">Express</span>
+                            <span class="tech-pill">MySQL</span>
+                            <span class="tech-pill">REST APIs</span>
+                        </div>
+                    </div>
+                    <div class="proj-footer-links">
+                        <a href="https://github.com/vivekgupta821045" target="_blank" rel="noopener" class="proj-link">⌥
+                            GitHub Repo</a>
+                        <a href="#contact" class="proj-link">↗ Case Study</a>
+                    </div>
+                </div>
+
+                <!-- PROJECT 3 -->
+                <div class="proj-bento-card">
+                    <div>
+                        <div class="proj-top-tag">
+                            <span>SYSTEM_03.EXE</span>
+                            <span style="color:var(--accent);">● THIS APP</span>
+                        </div>
+                        <h3 class="proj-title">Cyber Security Operations Portfolio &amp; 3D Lab</h3>
+                        <p class="proj-desc">
+                            Next-generation hacker OS experience combining Three.js 3D Earth, interactive attack vector
+                            trajectories, 3D holographic VIP badge with biometric scanning, and a draggable Kali
+                            terminal CLI.
+                        </p>
+                        <div class="proj-tech-stack">
+                            <span class="tech-pill">Three.js WebGL</span>
+                            <span class="tech-pill">Web Audio API</span>
+                            <span class="tech-pill">CSS 3D Hologram</span>
+                            <span class="tech-pill">Kali CLI</span>
+                        </div>
+                    </div>
+                    <div class="proj-footer-links">
+                        <a href="#hero" class="proj-link">↗ Top of Page</a>
+                        <a href="https://github.com/vivekgupta821045" target="_blank" rel="noopener" class="proj-link">⌥
+                            GitHub</a>
+                    </div>
+                </div>
+
+                <!-- PROJECT 4 -->
+                <div class="proj-bento-card">
+                    <div>
+                        <div class="proj-top-tag">
+                            <span>SYSTEM_04.EXE</span>
+                            <span style="color:var(--warning);">● DESKTOP</span>
+                        </div>
+                        <h3 class="proj-title">Library Management Core</h3>
+                        <p class="proj-desc">
+                            A robust Java desktop application backed by MySQL for inventory tracking, member validation,
+                            fine calculations, and secure role-based administrative transactions.
+                        </p>
+                        <div class="proj-tech-stack">
+                            <span class="tech-pill">Java SE</span>
+                            <span class="tech-pill">JDBC</span>
+                            <span class="tech-pill">MySQL</span>
+                            <span class="tech-pill">Swing UI</span>
+                        </div>
+                    </div>
+                    <div class="proj-footer-links">
+                        <a href="https://github.com/vivekgupta821045" target="_blank" rel="noopener" class="proj-link">⌥
+                            GitHub Repo</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================================================================
+             CONTACT SECTION: DIRECT CHANNELS
+             ================================================================== -->
+        <section id="contact">
+            <div class="eyebrow">05 // SECURE TRANSMISSION</div>
+            <h2 class="title">Initiate Connection</h2>
+            <p class="sub">Open to internships, freelance projects, and cyber defense collaborations. Choose an
+                authenticated channel below.</p>
+
+            <div class="contact-channels-grid">
+                <!-- EMAIL -->
+                <a href="mailto:vivekgupta821045@gmail.com" class="contact-card-item">
+                    <div class="contact-icon-bubble">
+                        <div class="contact-icon">
+                            <img src="mail.png" alt="Email">
+                        </div>
+                    </div>
+                    <div class="contact-info-col">
+                        <small>SMTP • PORT 25</small>
+                        <h3>Email</h3>
+                        <p>vivekgupta821045@gmail.com</p>
+                    </div>
+                </a>
+
+                <!-- GITHUB -->
+                <a href="https://github.com/vivekgupta821045" target="_blank" rel="noopener" class="contact-card-item">
+                    <div class="contact-icon-bubble">
+                        <div class="contact-icon">
+                            <img src="git.png" alt="GitHub">
+                        </div>
+                    </div>
+                    <div class="contact-info-col">
+                        <small>HTTPS • PORT 443</small>
+                        <h3>GitHub</h3>
+                        <p>@vivekgupta821045</p>
+                    </div>
+                </a>
+
+                <!-- LINKEDIN -->
+                <a href="https://www.linkedin.com/in/vivek-gupta-535031380" target="_blank" rel="noopener"
+                    class="contact-card-item">
+                    <div class="contact-icon-bubble">
+                        <div class="contact-icon">
+                            <img src="in.png" alt="LinkedIn">
+                        </div>
+                    </div>
+                    <div class="contact-info-col">
+                        <small>TLS • PORT 8443</small>
+                        <h3>LinkedIn</h3>
+                        <p>Vivek Gupta</p>
+                    </div>
+                </a>
+
+                <!-- WHATSAPP -->
+                <a href="https://wa.me/918210457599" target="_blank" rel="noopener" class="contact-card-item">
+                    <div class="contact-icon-bubble">
+                        <div class="contact-icon">
+                            <img src="whatsapp.png" alt="WhatsApp">
+                        </div>
+                    </div>
+                    <div class="contact-info-col">
+                        <small>E2E ENCRYPTED</small>
+                        <h3>WhatsApp</h3>
+                        <p>+91 8210457599</p>
+                    </div>
+                </a>
+
+                <!-- INSTAGRAM -->
+                <a href="https://instagram.com/vivek6667_" target="_blank" rel="noopener" class="contact-card-item">
+                    <div class="contact-icon-bubble">
+                        <div class="contact-icon">
+                            <img src="ins.png" alt="instagram">
+                        </div>
+                    </div>
+                    <div class="contact-info-col">
+                        <small>MEDIA FEED</small>
+                        <h3>Instagram</h3>
+                        <p>@vivek6667_</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="cyber-footer">
+        <div class="footer-laser-line"></div>
+        <div class="footer-glow-backdrop"></div>
+
+        <div class="footer-container">
+            <!-- TOP TELEMETRY RIBBON -->
+            <div class="footer-ribbon">
+                <div class="ribbon-item">
+                    <span class="os-dot"></span>
+                    <span>SEC-OPS NODE: <b>DEL-ALPHA-01</b></span>
+                    <span class="ribbon-badge">LEVEL 4</span>
+                </div>
+                <div class="ribbon-item">
+                    <span>LOCAL: <b id="footerClockLocal" style="color:var(--accent);">00:00:00 IST</b></span>
+                    <span>•</span>
+                    <span>UTC: <b id="footerClockUtc">00:00:00Z</b></span>
+                </div>
+                <div class="ribbon-item">
+                    <span>PING: <b style="color:var(--accent);">18ms</b></span>
+                    <span>•</span>
+                    <span>CIPHER: <b>AES-256-GCM</b></span>
+                    <span class="ribbon-badge" style="color:var(--cyan);border-color:var(--cyan);">TLS 1.3</span>
+                </div>
+            </div>
+
+            <!-- MAIN 4-COLUMN HIGH-TECH GRID -->
+            <div class="footer-main-grid">
+                <!-- COL 1: OPERATOR DOSSIER -->
+                <div class="footer-col">
+                    <div class="footer-brand">
+                        VIVEK <span>GUPTA</span><span class="sec-tag">.sec</span>
+                    </div>
+                    <p class="footer-bio-text">
+                        B.Tech CSE student at <b>Arka Jain University</b> specializing in offensive security, hardened
+                        backend infrastructure, and high-performance real-time architectures.
+                    </p>
+                    <div class="footer-security-chips">
+                        <div class="footer-chip">
+                            <span>CLEARANCE:</span>
+                            <b>L4 TOP SECRET</b>
+                        </div>
+                        <div class="footer-chip">
+                            <span>SHA-256:</span>
+                            <b>0x7F9A...4B21</b>
+                        </div>
+                        <div class="footer-chip">
+                            <span>STATUS:</span>
+                            <b style="color:var(--accent);">ACTIVE DEFENSE</b>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- COL 2: QUICK PROTOCOLS (NAV) -->
+                <div class="footer-col">
+                    <div class="footer-col-title">
+                        <span>01 // PROTOCOLS</span>
+                    </div>
+                    <ul class="footer-links-list">
+                        <li><a href="#hero"><span class="arrow">▸</span> 00 // ROOT [HERO]</a></li>
+                        <li><a href="#cyber-command"><span class="arrow">▸</span> 01 // THREAT RADAR [3D]</a></li>
+                        <li><a href="#about"><span class="arrow">▸</span> 02 // OPERATOR PROFILE</a></li>
+                        <li><a href="#skills"><span class="arrow">▸</span> 03 // CAPABILITIES</a></li>
+                        <li><a href="#projects"><span class="arrow">▸</span> 04 // DEPLOYED APPS</a></li>
+                        <li><a href="#contact"><span class="arrow">▸</span> 05 // SECURE CHANNELS</a></li>
+                    </ul>
+                </div>
+
+                <!-- COL 3: TECH ARSENAL -->
+                <div class="footer-col">
+                    <div class="footer-col-title">
+                        <span>02 // RUNTIME ARSENAL</span>
+                    </div>
+                    <div class="footer-arsenal-cloud">
+                        <span class="arsenal-pill"><span class="p-dot"></span>Node.js / Express</span>
+                        <span class="arsenal-pill"><span class="p-dot"></span>Socket.IO 4.7</span>
+                        <span class="arsenal-pill"><span class="p-dot"></span>Advanced Java</span>
+                        <span class="arsenal-pill"><span class="p-dot"></span>Kali Linux / Nmap</span>
+                        <span class="arsenal-pill"><span class="p-dot"></span>MongoDB Enterprise</span>
+                        <span class="arsenal-pill"><span class="p-dot"></span>MySQL Relational</span>
+                        <span class="arsenal-pill"><span class="p-dot"></span>Three.js WebGL</span>
+                        <span class="arsenal-pill"><span class="p-dot"></span>OWASP Top 10</span>
+                        <span class="arsenal-pill"><span class="p-dot"></span>Cisco Packet Tracer</span>
+                        <span class="arsenal-pill"><span class="p-dot"></span>Git / GitHub CI</span>
+                    </div>
+                </div>
+
+                <!-- COL 4: OPERATIONS CONSOLE -->
+                <div class="footer-col">
+                    <div class="footer-col-title">
+                        <span>03 // COMMAND ACTIONS</span>
+                    </div>
+                    <div class="footer-actions-list">
+                        <a href="#hero" class="footer-action-link primary-action" title="Back to top">
+                            <span>▲ RETURN TO TOP</span>
+                            <span>[ORBIT]</span>
+                        </a>
+                        <button class="footer-action-link" onclick="window.toggleCyberShield()">
+                            <span>🛡️ DEPLOY 3D SHIELD</span>
+                            <span style="color:var(--accent);">EXEC</span>
+                        </button>
+                        <button class="footer-action-link"
+                            onclick="document.getElementById('openTerminalBtn')?.click()">
+                            <span>⌨️ LAUNCH TERMINAL</span>
+                            <span style="color:var(--cyan);">CLI</span>
+                        </button>
+                        <button class="footer-action-link"
+                            onclick="window.setCyberTheme(document.body.classList.contains('defcon-mode') ? 'teal' : 'red')">
+                            <span>🚨 DEFCON 1 ALERT</span>
+                            <span style="color:var(--danger);">MODE</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- LIVE CYBER TICKER MARQUEE -->
+        <div class="footer-ticker-bar" style="margin-top:36px;">
+            <div class="footer-ticker-content">
+                <span>[SECURITY PERIMETER: ARMED]</span> •
+                <span>[WAF: ZERO-TRUST FILTERING ACTIVE]</span> •
+                <span>[DDoS MITIGATION: 842.6 k/s BUFFER]</span> •
+                <span>[INTRUSIONS NEUTRALIZED: 3,137+]</span> •
+                <span>[CTF HASH: CAPTURED]</span> •
+                <span>[SOCKET.IO: FULL DUPLEX ENCRYPTED]</span> •
+                <span>[OPERATOR: VIVEK GUPTA // ARKA JAIN UNIVERSITY]</span> •
+                <span>[ALL PORTS MONITORED: 22, 80, 443, 3000, 27017]</span> •
+                <span>[SYSTEM INTEGRITY: 100% NOMINAL]</span>
+            </div>
+        </div>
+
+        <!-- BOTTOM COPYRIGHT BAR -->
+        <div class="footer-container" style="padding-top:18px;">
+            <div class="footer-bottom-row">
+                <div>
+                    © 2026 <span class="author-name">VIVEK GUPTA</span> • ALL INTRUSION PROTOCOLS ARMED &amp; MONITORED
+                </div>
+                <div style="font-size:10.5px;color:var(--text-dim);">
+                    DESIGNED WITH VERCEL GLASSMORPHISM &amp; KALI LINUX ETHOS
+                </div>
+                <div class="footer-status-pill">
+                    <span class="os-dot"></span>
+                    <span>SYSTEM INTEGRITY : NOMINAL (0 VULNERABILITIES)</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ==============================
+        // HACKER BOOT SEQUENCE
+        // ==============================
+
+        (function () {
+
+            const bootLines = [
+                "INITIALIZING SECURE BOOT SEQUENCE...",
+                "[ OK ] Loading Security modules",
+                "[ OK ] Mounting encrypted filesystem",
+                "[ OK ] Verifying operator credentials",
+                "[ ACCESS ] Cyber Portfolio Loaded — VIVEK GUPTA",
+                "[ SUCCESS ] Welcome to VIVEK GUPTA's Cyber Lab"
+            ];
+
+            const bootEl = document.getElementById('bootText');
+            const bootScreen = document.getElementById('boot');
+
+            if (!bootEl || !bootScreen) return;
+
+            let li = 0;
+            let ci = 0;
+
+            function typeBoot() {
+
+                if (li < bootLines.length) {
+
+                    const line = bootLines[li];
+
+                    if (ci <= line.length) {
+
+                        bootEl.textContent =
+                            bootLines.slice(0, li).join('\n') +
+                            (li > 0 ? '\n' : '') +
+                            line.slice(0, ci);
+
+                        ci++;
+
+                        setTimeout(typeBoot, 14);
+
+                    } else {
+
+                        li++;
+                        ci = 0;
+
+                        setTimeout(typeBoot, 90);
+                    }
+
+                } else {
+
+                    setTimeout(() => {
+
+                        bootScreen.classList.add('hide');
+
+                        setTimeout(() => {
+                            bootScreen.style.display = 'none';
+                        }, 700);
+
+                    }, 350);
+                }
+            }
+
+            typeBoot();
+
+        })();
+    </script>
+    <!-- ======================================================================
+         PILLAR 3: DRAGGABLE KALI / MR. ROBOT TERMINAL WINDOW
+         ====================================================================== -->
+    <div class="terminal-window-wrapper" id="terminalWindow">
+        <div class="term-topbar" id="termDragHandle">
+            <div class="term-dots">
+                <span class="tdot close" id="termBtnClose" title="Close Window"></span>
+                <span class="tdot min" id="termBtnMin" title="Minimize Window"></span>
+                <span class="tdot max" id="termBtnMax" title="Toggle Fullscreen"></span>
+            </div>
+            <div class="term-shell-title">root@kali: ~/vivek-sec-lab (zsh)</div>
+            <div style="font-size:10px;color:var(--accent);">PID: 4048</div>
+        </div>
+        <div class="term-terminal-body" id="termOutput"></div>
+        <div class="term-input-row"
+            style="padding:10px 16px;background:rgba(0,0,0,0.5);border-top:1px solid var(--panel-border);">
+            <span class="term-input-prompt">vivek@sec-kali:~$</span>
+            <input type="text" class="term-cli-input" id="termCliInput"
+                placeholder="type 'help', 'scan target.corp', 'exploit', 'whoami'..." autocomplete="off"
+                spellcheck="false">
+        </div>
+    </div>
+
+    <!-- ======================================================================
+         PILLAR 4: FLOATING 3D INTERACTIVE AI COMPANION (IMAGE 3 - CYBERBOT AI)
+         ====================================================================== -->
+    <div class="ai-companion-widget" id="aiCompanionWidget">
+        <div class="ai-bot-avatar-wrap" id="aiBotAvatar" title="Click to chat with CyberBot AI">
+            <div class="ai-hologram-ring"></div>
+            <div class="ai-shield-badge-float">
+                <svg viewBox="0 0 24 24">
+                    <path
+                        d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 6h2v2h-2V7zm0 4h2v6h-2v-6z" />
+                </svg>
+            </div>
+            <div class="ai-avatar-core">
+                <img src="assets/cyber-ai-avatar.jpg" alt="CyberBot AI Co-Pilot">
+            </div>
+        </div>
+
+        <div class="ai-speech-bubble" id="aiSpeechBubble">
+            <div class="ai-bubble-head">
+                <span>🤖 CYBERBOT AI // CO-PILOT</span>
+                <span style="cursor:pointer;" id="aiBubbleClose">✕</span>
+            </div>
+            <div class="ai-bubble-text" id="aiBubbleText">
+                Greetings, Operator! I am CyberBot AI, Vivek's autonomous defense co-pilot. All perimeter defenses are
+                operational.
+            </div>
+            <div class="ai-quick-chips">
+                <span class="ai-chip" onclick="window.askAiCompanion('whoami')">Who is Vivek?</span>
+                <span class="ai-chip" onclick="window.askAiCompanion('skills')">Skills</span>
+                <span class="ai-chip" onclick="window.askAiCompanion('scan')">Port Scan</span>
+                <span class="ai-chip" onclick="window.askAiCompanion('shield')">3D Shield</span>
+                <span class="ai-chip" onclick="window.askAiCompanion('defcon1')">DEFCON 1</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="assets/globe-data.js"></script>
+    <script src="assets/cyber-globe.js"></script>
+    <script src="assets/terminal-os.js"></script>
+    <script src="assets/ai-companion.js"></script>
+
+    <!-- MATRIX RAIN & ROLE TYPEWRITER SCRIPT -->
+    <script>
+        // Matrix Rain Canvas
+        (function () {
+            const canvas = document.getElementById('matrix');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            let w, h, cols, drops;
+            function resize() {
+                w = canvas.width = window.innerWidth;
+                h = canvas.height = window.innerHeight;
+                cols = Math.floor(w / 16);
+                drops = new Array(cols).fill(0);
+            }
+            resize();
+            window.addEventListener('resize', resize);
+            const chars = "010101VIVEKGUPTA404#@$&*アイウエオカキクケコサシスセソ";
+            function draw() {
+                ctx.fillStyle = 'rgba(3, 7, 7, 0.08)';
+                ctx.fillRect(0, 0, w, h);
+                const isRed = document.body.classList.contains('defcon-mode');
+                ctx.fillStyle = isRed ? '#ff2a5f' : '#39ff9d';
+                ctx.font = '13px monospace';
+                for (let i = 0; i < drops.length; i++) {
+                    const text = chars[Math.floor(Math.random() * chars.length)];
+                    ctx.fillText(text, i * 16, drops[i] * 16);
+                    if (drops[i] * 16 > h && Math.random() > 0.98) drops[i] = 0;
+                    drops[i]++;
+                }
+                requestAnimationFrame(draw);
+            }
+            draw();
+        })();
+
+        // Hero Role Typewriter
+        (function () {
+            const roles = [
+                "// Cybersecurity Enthusiast",
+                "// Full-Stack Developer",
+                "// Ethical Hacker & CTF Player",
+                "// Real-Time Systems Engineer"
+            ];
+            const el = document.getElementById('heroTypedRole');
+            if (!el) return;
+            let rIdx = 0, cIdx = 0, isDeleting = false;
+            function type() {
+                const cur = roles[rIdx];
+                if (!isDeleting) {
+                    el.textContent = cur.slice(0, cIdx++);
+                    if (cIdx > cur.length) {
+                        isDeleting = true;
+                        setTimeout(type, 1800);
+                        return;
+                    }
+                } else {
+                    el.textContent = cur.slice(0, cIdx--);
+                    if (cIdx < 0) {
+                        isDeleting = false;
+                        rIdx = (rIdx + 1) % roles.length;
+                        cIdx = 0;
+                    }
+                }
+                setTimeout(type, isDeleting ? 30 : 65);
+            }
+            type();
+        })();
+
+        // Taskbar Buttons Binding
+        document.getElementById('themeToggleBtn')?.addEventListener('click', () => {
+            const isRed = document.body.classList.contains('defcon-mode');
+            window.setCyberTheme(isRed ? 'teal' : 'red');
+        });
+
+        document.getElementById('shieldToggleBtn')?.addEventListener('click', () => {
+            window.toggleCyberShield();
+        });
+
+        document.getElementById('audioToggleBtn')?.addEventListener('click', () => {
+            // Trigger audio command in terminal
+            const input = document.getElementById('termCliInput');
+            if (input) {
+                input.value = 'audio';
+                const ev = new KeyboardEvent('keydown', { key: 'Enter' });
+                input.dispatchEvent(ev);
+            }
+        });
+    </script>
+</body>
+
+</html>
