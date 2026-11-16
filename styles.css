@@ -2572,3 +2572,315 @@ h2.title {
         text-align: center;
     }
 }
+/* --------------------------------------------------------------------------
+   COMPREHENSIVE RESPONSIVE DESIGN (ALL DEVICES & MOBILE SCREENS)
+   Desktop, Laptop, Tablet, Phablet, Mobile (320px - 768px)
+   -------------------------------------------------------------------------- */
+
+/* Prevent horizontal scroll under any circumstances */
+html, body {
+    max-width: 100vw;
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+}
+
+main {
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+
+/* TABLETS & SMALL LAPTOPS (<= 1024px) */
+@media (max-width: 1024px) {
+    section {
+        padding: 70px 6vw;
+    }
+    #hero {
+        grid-template-columns: 1fr;
+        padding-top: 40px;
+        gap: 36px;
+    }
+    .badge-stage-wrap {
+        order: -1;
+        margin: 0 auto;
+    }
+    .cyber-hud-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+    .stats-strip {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+    }
+    .footer-main-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 28px;
+    }
+}
+
+/* TABLETS & MEDIUM MOBILES (<= 768px) */
+@media (max-width: 768px) {
+    .os-taskbar {
+        padding: 0 14px;
+        height: 46px;
+    }
+    .os-navlinks {
+        display: none;
+    }
+    .os-left {
+        gap: 10px;
+    }
+    .os-right {
+        gap: 8px;
+    }
+    .os-badge {
+        display: none;
+    }
+    .os-action-btn {
+        padding: 4px 8px;
+        font-size: 10px;
+    }
+    .threat-count-pill {
+        font-size: 9px;
+        padding: 2px 6px;
+    }
+
+    section {
+        padding: 60px 5vw;
+    }
+
+    /* Hero */
+    .hero-terminal-card {
+        border-radius: var(--radius-md);
+    }
+    .term-body-content {
+        padding: 18px 14px;
+    }
+    .hero-name {
+        font-size: clamp(28px, 8vw, 42px);
+    }
+    .hero-bio {
+        font-size: 13px;
+        line-height: 1.65;
+    }
+    .role-typing-box {
+        font-size: 12.5px;
+        padding: 4px 10px;
+    }
+    .hero-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .hero-actions .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* 3D Holographic Card on Tablets/Phones */
+    .badge-card-container {
+        width: min(320px, calc(100vw - 32px));
+        height: 460px;
+    }
+
+    /* Grids */
+    .skills-bento {
+        grid-template-columns: 1fr;
+    }
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+    .contact-channels-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Draggable Terminal Window */
+    .terminal-window-wrapper {
+        width: calc(100vw - 20px) !important;
+        left: 10px !important;
+        right: 10px !important;
+        bottom: 10px !important;
+        height: min(350px, 58vh);
+        border-radius: 12px;
+    }
+    .term-cli-input {
+        font-size: 15px;
+    }
+
+    /* Floating AI Companion Widget */
+    .ai-companion-widget {
+        bottom: 12px;
+        left: 10px;
+        gap: 10px;
+    }
+    .ai-bot-avatar-wrap {
+        width: 62px;
+        height: 62px;
+    }
+    .ai-speech-bubble {
+        max-width: calc(100vw - 84px);
+        padding: 10px 14px;
+        font-size: 11px;
+    }
+    .ai-bubble-text {
+        font-size: 11px;
+    }
+    .ai-chip {
+        font-size: 9px;
+        padding: 2px 6px;
+    }
+
+    /* Footer */
+    .footer-container {
+        padding: 30px 5vw 0 5vw;
+        gap: 24px;
+    }
+    .footer-ribbon {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    .footer-bottom-row {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+        align-items: center;
+    }
+}
+
+/* SMALL SMARTPHONES (<= 480px, e.g. iPhone SE, Galaxy, Pixel) */
+@media (max-width: 480px) {
+    .os-taskbar {
+        padding: 0 10px;
+    }
+    .os-logo {
+        font-size: 11.5px;
+    }
+    .os-right {
+        gap: 4px;
+    }
+    /* Compact icon format for action buttons on tiny screens */
+    #themeToggleBtn {
+        font-size: 0;
+        padding: 4px 6px;
+    }
+    #themeToggleBtn::before {
+        content: '🌐';
+        font-size: 12px;
+    }
+    #shieldToggleBtn {
+        font-size: 0;
+        padding: 4px 6px;
+    }
+    #shieldToggleBtn::before {
+        content: '🛡️';
+        font-size: 12px;
+    }
+    #openTerminalBtn {
+        font-size: 0;
+        padding: 4px 6px;
+    }
+    #openTerminalBtn::before {
+        content: '⌨️';
+        font-size: 12px;
+    }
+    #audioToggleBtn {
+        font-size: 0;
+        padding: 4px 6px;
+    }
+    #audioToggleBtn::before {
+        content: '🔊';
+        font-size: 12px;
+    }
+
+    section {
+        padding: 48px 14px;
+    }
+    .eyebrow {
+        font-size: 10px;
+        letter-spacing: 0.15em;
+    }
+    h2.title {
+        font-size: clamp(22px, 7vw, 32px);
+    }
+    .sub {
+        font-size: 13px;
+        line-height: 1.6;
+        margin-bottom: 24px;
+    }
+
+    /* Stats on small mobile */
+    .stats-strip {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        margin-bottom: 40px;
+    }
+    .stat-card {
+        padding: 14px 12px;
+    }
+    .stat-number {
+        font-size: 26px;
+    }
+    .stat-label {
+        font-size: 10px;
+    }
+
+    /* 3D VIP Badge scaled for small phone */
+    .badge-card-container {
+        width: min(290px, calc(100vw - 28px));
+        height: 440px;
+    }
+    .badge-avatar-wrap {
+        height: 155px;
+        margin: 6px 14px;
+    }
+    .badge-details-box {
+        padding: 4px 14px 10px 14px;
+    }
+    .badge-op-name {
+        font-size: 16px;
+    }
+    .badge-meta-row {
+        font-size: 8.5px;
+    }
+    .badge-control-bar {
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+    .badge-control-btn {
+        flex: 1;
+        justify-content: center;
+        font-size: 10px;
+        padding: 6px 8px;
+    }
+
+    /* Bento Cards */
+    .proj-bento-card, .skill-bento-card, .about-bio-card {
+        padding: 18px 14px;
+        border-radius: var(--radius-md);
+    }
+    .proj-title {
+        font-size: 17px;
+    }
+    .proj-desc {
+        font-size: 12.5px;
+    }
+
+    /* Footer */
+    .footer-container {
+        padding: 24px 14px 0 14px;
+    }
+    .footer-main-grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+    .footer-brand {
+        font-size: 22px;
+    }
+    .footer-actions-list .footer-action-link {
+        font-size: 10px;
+        padding: 7px 10px;
+    }
+}
