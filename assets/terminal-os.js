@@ -136,6 +136,7 @@
         let isDraggingTerm = false;
         let termOffset = { x: 0, y: 0 };
 
+        // Drag with mouse or mobile touch
         termBar.addEventListener('mousedown', e => {
             if (e.target.classList.contains('tdot')) return;
             isDraggingTerm = true;
@@ -144,24 +145,43 @@
             termOffset.y = e.clientY - rect.top;
         });
 
-        window.addEventListener('mousemove', e => {
+        termBar.addEventListener('touchstart', e => {
+            if (e.target.classList.contains('tdot')) return;
+            if (e.touches && e.touches.length === 1) {
+                isDraggingTerm = true;
+                const rect = termWin.getBoundingClientRect();
+                termOffset.x = e.touches[0].clientX - rect.left;
+                termOffset.y = e.touches[0].clientY - rect.top;
+            }
+        }, { passive: true });
+
+        function handleTermMove(clientX, clientY) {
             if (!isDraggingTerm) return;
-            let newX = e.clientX - termOffset.x;
-            let newY = e.clientY - termOffset.y;
+            let newX = clientX - termOffset.x;
+            let newY = clientY - termOffset.y;
 
             // Constrain within screen
-            newX = Math.max(10, Math.min(window.innerWidth - termWin.offsetWidth - 10, newX));
-            newY = Math.max(50, Math.min(window.innerHeight - termWin.offsetHeight - 10, newY));
+            newX = Math.max(8, Math.min(window.innerWidth - termWin.offsetWidth - 8, newX));
+            newY = Math.max(50, Math.min(window.innerHeight - termWin.offsetHeight - 8, newY));
 
             termWin.style.left = newX + 'px';
             termWin.style.top = newY + 'px';
             termWin.style.right = 'auto';
             termWin.style.bottom = 'auto';
+        }
+
+        window.addEventListener('mousemove', e => {
+            handleTermMove(e.clientX, e.clientY);
         });
 
-        window.addEventListener('mouseup', () => {
-            isDraggingTerm = false;
-        });
+        window.addEventListener('touchmove', e => {
+            if (isDraggingTerm && e.touches && e.touches.length === 1) {
+                handleTermMove(e.touches[0].clientX, e.touches[0].clientY);
+            }
+        }, { passive: true });
+
+        window.addEventListener('mouseup', () => { isDraggingTerm = false; });
+        window.addEventListener('touchend', () => { isDraggingTerm = false; });
 
         // Window Controls
         const btnClose = document.getElementById('termBtnClose');
