@@ -74,10 +74,11 @@
         camera = new THREE.PerspectiveCamera(45, aspect, 1, 2000);
         camera.position.set(0, 0, 360);
 
-        // WebGL Renderer with Alpha
+        // WebGL Renderer with Alpha & Mobile Capped DPR
+        const isSmallScreen = window.innerWidth < 768;
         renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
         renderer.setSize(wrap.clientWidth, wrap.clientHeight);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, isSmallScreen ? 1.5 : 2));
         wrap.appendChild(renderer.domElement);
 
         globeGroup = new THREE.Group();
@@ -436,7 +437,7 @@
             mouse.targetY = y * 0.35;
         });
 
-        // 360° Drag Rotation on Globe Canvas
+        // 360° Drag Rotation on Globe Canvas (Mouse & Mobile Touch)
         const dom = renderer.domElement;
         dom.addEventListener('mousedown', e => {
             isDragging = true;
@@ -456,6 +457,30 @@
         });
 
         window.addEventListener('mouseup', () => {
+            isDragging = false;
+        });
+
+        // Mobile Touch Listeners for Smooth 3D Dragging
+        dom.addEventListener('touchstart', e => {
+            if (e.touches && e.touches.length === 1) {
+                isDragging = true;
+                prevMousePos = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+                dragVelocity = { x: 0, y: 0 };
+            }
+        }, { passive: true });
+
+        window.addEventListener('touchmove', e => {
+            if (!isDragging || !e.touches || e.touches.length !== 1) return;
+            const deltaX = e.touches[0].clientX - prevMousePos.x;
+            const deltaY = e.touches[0].clientY - prevMousePos.y;
+            dragVelocity.x = deltaX * 0.006;
+            dragVelocity.y = deltaY * 0.006;
+            userRotation.y += dragVelocity.x;
+            userRotation.x += dragVelocity.y;
+            prevMousePos = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+        }, { passive: true });
+
+        window.addEventListener('touchend', () => {
             isDragging = false;
         });
 
@@ -498,11 +523,15 @@
         userRotation.x = Math.max(-1.1, Math.min(1.1, userRotation.x));
 
         // 2. Scroll-Linked Dynamic Camera Position & Angle
-        // In Hero: Offset to right side on desktop
         const isDesktop = window.innerWidth > 1024;
+        const isMobile = window.innerWidth < 768;
+        const mobileBaseZ = window.innerWidth < 480 ? 460 : 410;
+
         const targetGlobeX = isDesktop ? (scrollProgress < 0.25 ? 65 : (scrollProgress < 0.55 ? 0 : 50)) : 0;
-        const targetGlobeY = scrollProgress < 0.25 ? 0 : (scrollProgress < 0.55 ? -10 : 0);
-        const targetCamZ = scrollProgress < 0.25 ? 350 : (scrollProgress < 0.55 ? 290 : 360);
+        const targetGlobeY = isMobile ? (scrollProgress < 0.25 ? 15 : 0) : (scrollProgress < 0.25 ? 0 : (scrollProgress < 0.55 ? -10 : 0));
+        const targetCamZ = isMobile 
+            ? (scrollProgress < 0.25 ? mobileBaseZ : mobileBaseZ - 40)
+            : (scrollProgress < 0.25 ? 350 : (scrollProgress < 0.55 ? 290 : 360));
 
         globeGroup.position.x += (targetGlobeX - globeGroup.position.x) * 0.05;
         globeGroup.position.y += (targetGlobeY - globeGroup.position.y) * 0.05;
@@ -554,3 +583,4 @@
         init();
     }
 })();
+
