@@ -61,36 +61,44 @@
         const flipBtn = document.getElementById('badgeFlipBtn');
         if (flipBtn) flipBtn.addEventListener('click', window.flipVipBadge);
 
-        // Biometric Fingerprint Scanner Authentication
+        // Biometric Fingerprint Scanner Authentication (Mouse & Touch for Mobile)
         const fpBox = document.getElementById('fpScanner');
         const fpStatus = document.getElementById('fpStatus');
         let scanTimer = null;
 
+        function startFpScan(e) {
+            if (e.type === 'touchstart') e.preventDefault();
+            fpBox.classList.add('scanning');
+            fpStatus.textContent = 'SCANNING BIOMETRICS...';
+            fpStatus.style.color = 'var(--cyan)';
+            if (window.playCyberSound) window.playCyberSound('alarm');
+
+            scanTimer = setTimeout(() => {
+                fpStatus.textContent = 'CLEARANCE GRANTED ✔';
+                fpStatus.style.color = 'var(--accent)';
+                if (window.playCyberSound) window.playCyberSound('success');
+            }, 1600);
+        }
+
+        function endFpScan() {
+            if (scanTimer) {
+                clearTimeout(scanTimer);
+                scanTimer = null;
+            }
+            fpBox.classList.remove('scanning');
+            if (fpStatus.textContent !== 'CLEARANCE GRANTED ✔') {
+                fpStatus.textContent = 'HOLD TO AUTHENTICATE';
+                fpStatus.style.color = 'var(--text-muted)';
+            }
+        }
+
         if (fpBox && fpStatus) {
-            fpBox.addEventListener('mousedown', () => {
-                fpBox.classList.add('scanning');
-                fpStatus.textContent = 'SCANNING BIOMETRICS...';
-                fpStatus.style.color = 'var(--cyan)';
-                if (window.playCyberSound) window.playCyberSound('alarm');
+            fpBox.addEventListener('mousedown', startFpScan);
+            window.addEventListener('mouseup', endFpScan);
 
-                scanTimer = setTimeout(() => {
-                    fpStatus.textContent = 'CLEARANCE GRANTED ✔';
-                    fpStatus.style.color = 'var(--accent)';
-                    if (window.playCyberSound) window.playCyberSound('success');
-                }, 1600);
-            });
-
-            window.addEventListener('mouseup', () => {
-                if (scanTimer) {
-                    clearTimeout(scanTimer);
-                    scanTimer = null;
-                }
-                fpBox.classList.remove('scanning');
-                if (fpStatus.textContent !== 'CLEARANCE GRANTED ✔') {
-                    fpStatus.textContent = 'HOLD TO AUTHENTICATE';
-                    fpStatus.style.color = 'var(--text-muted)';
-                }
-            });
+            fpBox.addEventListener('touchstart', startFpScan, { passive: false });
+            window.addEventListener('touchend', endFpScan);
+            window.addEventListener('touchcancel', endFpScan);
         }
     }
 
@@ -158,7 +166,8 @@
             if (window.toggleCyberShield) window.toggleCyberShield(true);
         } else if (topic === 'defcon1') {
             setAiDialogue(DIALOGUES.defcon1);
-            if (window.setCyberTheme) window.setCyberTheme('red');
+            if (window.set
+                CyberTheme) window.setCyberTheme('red');
         } else if (topic === 'scan') {
             setAiDialogue(DIALOGUES.scan);
             // Open terminal and type scan
