@@ -61,47 +61,45 @@
         const flipBtn = document.getElementById('badgeFlipBtn');
         if (flipBtn) flipBtn.addEventListener('click', window.flipVipBadge);
 
-        // Biometric Fingerprint Scanner Authentication (Mouse & Touch for Mobile)
+        // Biometric Fingerprint Scanner Authentication
         const fpBox = document.getElementById('fpScanner');
         const fpStatus = document.getElementById('fpStatus');
         let scanTimer = null;
 
-        function startFpScan(e) {
-            if (e.type === 'touchstart') e.preventDefault();
-            fpBox.classList.add('scanning');
-            fpStatus.textContent = 'SCANNING BIOMETRICS...';
-            fpStatus.style.color = 'var(--cyan)';
-            if (window.playCyberSound) window.playCyberSound('alarm');
-
-            scanTimer = setTimeout(() => {
-                fpStatus.textContent = 'CLEARANCE GRANTED ✔';
-                fpStatus.style.color = 'var(--accent)';
-                if (window.playCyberSound) window.playCyberSound('success');
-            }, 1600);
-        }
-
-        function endFpScan() {
-            if (scanTimer) {
-                clearTimeout(scanTimer);
-                scanTimer = null;
-            }
-            fpBox.classList.remove('scanning');
-            if (fpStatus.textContent !== 'CLEARANCE GRANTED ✔') {
-                fpStatus.textContent = 'HOLD TO AUTHENTICATE';
-                fpStatus.style.color = 'var(--text-muted)';
-            }
-        }
-
         if (fpBox && fpStatus) {
-            fpBox.addEventListener('mousedown', startFpScan);
-            window.addEventListener('mouseup', endFpScan);
+            fpBox.addEventListener('mousedown', () => {
+                fpBox.classList.add('scanning');
+                fpStatus.textContent = 'SCANNING BIOMETRICS...';
+                fpStatus.style.color = 'var(--cyan)';
+                if (window.playCyberSound) window.playCyberSound('alarm');
 
-            fpBox.addEventListener('touchstart', startFpScan, { passive: false });
-            window.addEventListener('touchend', endFpScan);
-            window.addEventListener('touchcancel', endFpScan);
+                scanTimer = setTimeout(() => {
+                    fpStatus.textContent = 'CLEARANCE GRANTED ✔';
+                    fpStatus.style.color = 'var(--accent)';
+                    if (window.playCyberSound) window.playCyberSound('success');
+                }, 1600);
+            });
+
+            window.addEventListener('mouseup', () => {
+                if (scanTimer) {
+                    clearTimeout(scanTimer);
+                    scanTimer = null;
+                }
+                fpBox.classList.remove('scanning');
+                if (fpStatus.textContent !== 'CLEARANCE GRANTED ✔') {
+                    fpStatus.textContent = 'HOLD TO AUTHENTICATE';
+                    fpStatus.style.color = 'var(--text-muted)';
+                }
+            });
+        }
+
+        if (qrFrame) {
+            qrFrame.addEventListener('click', () => {
+                window.open('https://wa.me/918210457599', '_blank', 'noopener');
+                triggerVcardAlert("OPENING SEC-PROFILE ↗");
+            });
         }
     }
-
     // -------------------------------------------------------------------------
     // 2. ULTRA-SLICK 3D FLOATING AI COMPANION ("CyberBot AI" - Image 3)
     // -------------------------------------------------------------------------

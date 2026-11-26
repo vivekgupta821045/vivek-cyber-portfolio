@@ -829,44 +829,168 @@ h2.title {
     color: var(--text-muted);
 }
 
-.fingerprint-scanner-box {
+/* HOLOGRAPHIC DIGITAL BUSINESS CARD QR CODE */
+.holographic-qr-wrap {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 8px;
-    padding: 16px;
-    background: rgba(0, 0, 0, 0.4);
-    border: 1px solid var(--panel-border);
-    border-radius: 12px;
-    cursor: pointer;
-    transition: all 0.2s;
+    padding: 8px 0 4px 0;
     user-select: none;
 }
 
-.fingerprint-scanner-box:active, .fingerprint-scanner-box.scanning {
+.qr-holo-frame {
+    position: relative;
+    width: 148px;
+    height: 148px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.65);
+    border: 1px solid var(--panel-border);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-shadow: 0 0 25px rgba(57, 255, 157, 0.12), inset 0 0 15px rgba(0, 0, 0, 0.8);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.qr-holo-frame:hover {
     border-color: var(--accent);
-    background: rgba(57, 255, 157, 0.1);
-    box-shadow: 0 0 20px var(--accent-glow);
+    box-shadow: 0 0 30px var(--accent-glow);
+    transform: scale(1.03);
 }
 
-.fp-icon svg {
-    width: 48px;
-    height: 48px;
+.qr-corner-tl, .qr-corner-tr, .qr-corner-bl, .qr-corner-br {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-color: var(--accent);
+    pointer-events: none;
+    z-index: 5;
+}
+.qr-corner-tl { top: 4px; left: 4px; border-top: 2px solid; border-left: 2px solid; }
+.qr-corner-tr { top: 4px; right: 4px; border-top: 2px solid; border-right: 2px solid; }
+.qr-corner-bl { bottom: 4px; left: 4px; border-bottom: 2px solid; border-left: 2px solid; }
+.qr-corner-br { bottom: 4px; right: 4px; border-bottom: 2px solid; border-right: 2px solid; }
+
+.qr-laser-scanner {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, var(--accent) 50%, transparent 100%);
+    box-shadow: 0 0 10px var(--accent);
+    animation: qrLaserMove 2.6s ease-in-out infinite alternate;
+    pointer-events: none;
+    z-index: 4;
+}
+
+@keyframes qrLaserMove {
+    0% { top: 6%; opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { top: 92%; opacity: 0.5; }
+}
+
+.qr-svg-holder {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.qr-svg-graphic {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 0 4px rgba(57, 255, 157, 0.55));
+    transition: filter 0.3s ease;
+}
+
+body.defcon-mode .qr-svg-graphic {
+    filter: hue-rotate(240deg) drop-shadow(0 0 4px rgba(255, 42, 95, 0.65));
+}
+
+.qr-center-emblem {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 26px;
+    height: 26px;
+    background: #030806;
+    border: 1.5px solid var(--accent);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 12px var(--accent-glow);
+    z-index: 3;
+}
+
+.qr-center-emblem svg {
+    width: 14px;
+    height: 14px;
     fill: var(--accent);
-    transition: transform 0.2s;
 }
 
-.fingerprint-scanner-box:active .fp-icon svg {
-    transform: scale(0.94);
-}
-
-.fp-status {
-    font-size: 10px;
-    color: var(--accent);
+.qr-scan-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 9.5px;
     letter-spacing: 0.1em;
+    color: var(--accent);
+    font-family: var(--mono);
+    text-shadow: 0 0 6px var(--accent-glow);
 }
 
+.pulse-beacon {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 8px var(--accent);
+    animation: blip 1.5s infinite;
+}
+
+/* Quick Connect Action Chips on Badge */
+.badge-connect-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 100%;
+    margin-top: 4px;
+}
+
+.b-chip-link, .b-chip-btn {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--panel-border);
+    color: var(--text);
+    padding: 5px 9px;
+    border-radius: 6px;
+    font-size: 9.5px;
+    font-family: var(--mono);
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: all 0.2s ease;
+}
+
+.b-chip-link:hover, .b-chip-btn:hover {
+    background: rgba(57, 255, 157, 0.12);
+    border-color: var(--accent);
+    color: var(--accent);
+    box-shadow: 0 0 10px var(--accent-glow);
+    transform: translateY(-1px);
+}
 .badge-footer-keys {
     font-size: 8px;
     color: var(--text-dim);
