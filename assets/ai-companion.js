@@ -164,8 +164,7 @@
             if (window.toggleCyberShield) window.toggleCyberShield(true);
         } else if (topic === 'defcon1') {
             setAiDialogue(DIALOGUES.defcon1);
-            if (window.set
-                CyberTheme) window.setCyberTheme('red');
+            if (window.setCyberTheme) window.setCyberTheme('red');
         } else if (topic === 'scan') {
             setAiDialogue(DIALOGUES.scan);
             // Open terminal and type scan
@@ -185,3 +184,4 @@
         setAiDialogue(DIALOGUES.greet);
     }, 2800);
 })();
+
