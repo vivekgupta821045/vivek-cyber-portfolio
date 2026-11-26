@@ -61,45 +61,58 @@
         const flipBtn = document.getElementById('badgeFlipBtn');
         if (flipBtn) flipBtn.addEventListener('click', window.flipVipBadge);
 
-        // Biometric Fingerprint Scanner Authentication
-        const fpBox = document.getElementById('fpScanner');
-        const fpStatus = document.getElementById('fpStatus');
-        let scanTimer = null;
+        // Interactive Holographic Digital Business Card (QR Code & vCard)
+        const qrFrame = document.getElementById('qrHoloFrame');
+        const qrStatusText = document.getElementById('qrStatusText');
+        const copyVcardBtn = document.getElementById('copyVcardBtn');
 
-        if (fpBox && fpStatus) {
-            fpBox.addEventListener('mousedown', () => {
-                fpBox.classList.add('scanning');
-                fpStatus.textContent = 'SCANNING BIOMETRICS...';
-                fpStatus.style.color = 'var(--cyan)';
-                if (window.playCyberSound) window.playCyberSound('alarm');
+        const VCARD_DATA = 
+`BEGIN:VCARD
+VERSION:3.0
+FN:Vivek Gupta
+TITLE:Cybersecurity & Full-Stack Developer
+EMAIL:vivekgupta821045@gmail.com
+TEL:+918210457599
+URL:https://github.com/vivekgupta821045
+NOTE:B.Tech CSE - Arka Jain University // Security Operations Pass VK-0417
+END:VCARD`;
 
-                scanTimer = setTimeout(() => {
-                    fpStatus.textContent = 'CLEARANCE GRANTED ✔';
-                    fpStatus.style.color = 'var(--accent)';
-                    if (window.playCyberSound) window.playCyberSound('success');
-                }, 1600);
-            });
+        function triggerVcardAlert(msg) {
+            if (!qrStatusText) return;
+            const original = qrStatusText.textContent;
+            qrStatusText.textContent = msg;
+            qrStatusText.style.color = 'var(--cyan)';
+            if (window.playCyberSound) window.playCyberSound('success');
 
-            window.addEventListener('mouseup', () => {
-                if (scanTimer) {
-                    clearTimeout(scanTimer);
-                    scanTimer = null;
-                }
-                fpBox.classList.remove('scanning');
-                if (fpStatus.textContent !== 'CLEARANCE GRANTED ✔') {
-                    fpStatus.textContent = 'HOLD TO AUTHENTICATE';
-                    fpStatus.style.color = 'var(--text-muted)';
+            setTimeout(() => {
+                qrStatusText.textContent = original;
+                qrStatusText.style.color = 'var(--accent)';
+            }, 2600);
+        }
+
+        if (copyVcardBtn) {
+            copyVcardBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (navigator.clipboard) {
+                    navigator.clipboard.writeText(VCARD_DATA).then(() => {
+                        triggerVcardAlert("vCARD COPIED TO CLIPBOARD ✔");
+                    }).catch(() => {
+                        triggerVcardAlert("CONTACT: +91 8210457599 ✔");
+                    });
+                } else {
+                    triggerVcardAlert("CONTACT: +91 8210457599 ✔");
                 }
             });
         }
 
         if (qrFrame) {
             qrFrame.addEventListener('click', () => {
-                window.open('https://wa.me/918210457599', '_blank', 'noopener');
+                window.open('https://github.com/vivekgupta821045', '_blank', 'noopener');
                 triggerVcardAlert("OPENING SEC-PROFILE ↗");
             });
         }
     }
+
     // -------------------------------------------------------------------------
     // 2. ULTRA-SLICK 3D FLOATING AI COMPANION ("CyberBot AI" - Image 3)
     // -------------------------------------------------------------------------
@@ -184,4 +197,3 @@
         setAiDialogue(DIALOGUES.greet);
     }, 2800);
 })();
-
