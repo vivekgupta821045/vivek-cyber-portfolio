@@ -193,3 +193,4 @@ def generate_qr_svg(url="https://wa.me/918210457599"):
     print(f'Successfully generated assets/qr-code.jpeg ({size}x{size}) with {len(rects)} data modules!')
 
 generate_qr_svg("https://wa.me/918210457599")
+
